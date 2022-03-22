@@ -1,15 +1,13 @@
-import Head from 'next/head'
+import Head from "next/head";
+import ListLogic from "../components/ListComponents/ListLogic";
+import Template from "../components/Template";
 
 const Home = () => {
   return (
     <>
-    <Head>
-      <title>Strona główna</title>
-    </Head>
-
-    <div className="flex w-full h-screen justify-center items-center p-10">
-      <h3 className="text-sky-600 text-xl font-medium p-10 bg-slate-900 rounded-3xl">NAPIS</h3>
-    </div>
+      <Template wrap title={'Word-o-mat'}>
+        <ListLogic />
+      </Template>
     </>
   )
 }
