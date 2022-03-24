@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import Container from "../Container";
+import ContainerMotion from "../ContainerMotion";
 import ButtonsContainer from "./ButtonsContainer";
 import StatItem from "./StatItem";
 
@@ -9,14 +9,15 @@ const ListItem = ({ title, date, words, removeList }) => {
         return d.toLocaleDateString();
     }, [date]);
 
-
     return (
-        <Container className="flex flex-col gap-5 items-center">
-            <h2 className="font-bold text-md sm:text-xl md:text-xl text-center">{title}</h2>
+        <ContainerMotion
+            className="grid gap-5 overflow-auto"
+        >
+            <h2 className="col-span-2 md:col-auto font-bold text-md sm:text-xl md:text-xl text-center">{title}</h2>
             <StatItem value={`${words.ids.length} ${words.ids.length == 1 ? 'word' : 'words'}`} />
-            <StatItem value={dateFormatted} />
-            <ButtonsContainer date={date} removeList={removeList} />
-        </Container>
+            <StatItem className="row-start-3" value={dateFormatted} />
+            <ButtonsContainer className="row-span-2 md:row-auto" date={date} removeList={removeList} />
+        </ContainerMotion>
     );
 }
 

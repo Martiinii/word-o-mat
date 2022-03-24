@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import useListStorage from "../useListStorage";
 import useLocalStorage from "../useLocalStorage";
@@ -8,10 +9,16 @@ const ListLogic = () => {
     const [ready, getList, lists, createList, removeList] = useListStorage();
 
     return (
-        <>
-            {lists.map(list => <ListItem {...list} key={list.date} removeList={() => {removeList(`l${list.date}`)}} />)}
-            <AddCard />
-        </>
+        <motion.div
+            layout
+            className="flex flex-wrap gap-1 md:gap-5 p-5 justify-center items-center"
+        >
+            <AnimatePresence>
+                {lists.map(list => <ListItem {...list} key={list.date} removeList={() => { removeList(`l${list.date}`) }} />)}
+                <AddCard />
+            </AnimatePresence>
+            
+        </motion.div>
     );
 }
 

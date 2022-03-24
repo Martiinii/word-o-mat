@@ -44,7 +44,7 @@ const Logo = () => {
             className="rounded-full shadow-zinc-500 shadow-md"
         >
             <img
-                className="h-10 sm:h-20 m-1 sm:m-3"
+                className="h-14 sm:h-20 m-1 sm:m-3"
                 src="/images/logo.svg"
             />
         </div>
