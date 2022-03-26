@@ -113,7 +113,7 @@ const Table = ({ words, setWords }) => {
                         <th className="p-4 border-b-2 border-slate-500">Creation date</th>
                     </tr>
                 </motion.thead>
-                <motion.tbody layout className="bg-red-500">
+                <motion.tbody layout>
                     {elements}
                     {newInput}
                 </motion.tbody>
