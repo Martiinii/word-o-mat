@@ -1,7 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
 import useListStorage from "../useListStorage";
-import useLocalStorage from "../useLocalStorage";
 import AddCard from "./AddCard";
 import ListItem from "./ListItem";
 
