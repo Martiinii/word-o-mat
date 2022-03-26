@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useInput = ({placeholder, className, defaultValue, ...props}) => {
+const useInput = ({ placeholder, className, defaultValue, ...props }) => {
     const [value, setValue] = useState(defaultValue ?? "");
 
     const input = (

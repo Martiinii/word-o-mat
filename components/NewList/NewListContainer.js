@@ -1,7 +1,8 @@
-import Container from "../Container"
+import ContainerMotion from "../ContainerMotion"
 import Table from "./Table";
 import useInput from '../useInput';
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const NewListContainer = ({ ready, list, updateList, title, updateTitle, words, updateWords }) => {
     const [titleInputValue, titleInput, setTitleInput] = useInput({ placeholder: 'Title', className: 'text-center' })
@@ -16,10 +17,14 @@ const NewListContainer = ({ ready, list, updateList, title, updateTitle, words, 
 
 
     return (
-        <Container className="max-w-full text-center">
-            {titleInput}
-            <Table words={words} setWords={updateWords} />
-        </Container>
+
+        <ContainerMotion className="max-w-full text-center bg-white p-5">
+            <motion.div layout>
+                {titleInput}
+            </motion.div>
+                <Table words={words} setWords={updateWords} />
+        </ContainerMotion>
+
     )
 }
 

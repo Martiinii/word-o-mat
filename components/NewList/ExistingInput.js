@@ -23,16 +23,15 @@ const ExistingInput = ({ original, setOriginal, translation, setTranslation, dat
             initial={{opacity: 0, scale: .7}}
             animate={{opacity: 1, scale: 1}}
             transition={{duration: .3}}
-            exit={{opacity: 0, scale: .5}}
             layout
         >
-            <td className="border-b p-1 border-slate-300">
+            <motion.td className="border-b p-1 border-slate-300">
                 <button onClick={handleClick} className="bg-red-600 text-white p-3 px-4 rounded-xl shadow-slate-400/50 shadow hover:bg-red-700 transition-all focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-offset-2 duration-300">
                     <FontAwesomeIcon icon={faClose} />
                 </button>
-            </td>
+            </motion.td>
 
-            <td className="p-4 border-b border-slate-300">
+            <motion.td className="p-4 border-b border-slate-300">
                 <input
                     placeholder="Original"
                     value={original}
@@ -40,9 +39,9 @@ const ExistingInput = ({ original, setOriginal, translation, setTranslation, dat
                     onChange={localOriginalChange}
                     ref={orgRef}
                 />
-            </td>
+            </motion.td>
 
-            <td className="p-4 border-b border-slate-300">
+            <motion.td className="p-4 border-b border-slate-300">
                 <input
                     placeholder="Translation"
                     value={translation}
@@ -50,9 +49,9 @@ const ExistingInput = ({ original, setOriginal, translation, setTranslation, dat
                     onChange={localTranslationChange}
                     ref={transRef}
                 />
-            </td>
+            </motion.td>
 
-            <td className="p-4 border-b border-slate-300">{dateFormatted}</td>
+            <motion.td className="p-4 border-b border-slate-300">{dateFormatted}</motion.td>
         </motion.tr>
     );
 }

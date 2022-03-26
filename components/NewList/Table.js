@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import useNewInput from "./useNewInput";
 import ExistingInput from "./ExistingInput"
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-const Table = ({words, setWords}) => {
+const Table = ({ words, setWords }) => {
     const [newInput, original, originalInput, translation, translationInput, resetInputs] = useNewInput();
 
     const newestInput = useRef(null);
@@ -49,7 +49,7 @@ const Table = ({words, setWords}) => {
         }
     }, [original, translation]);
 
-    
+
     const elements = useMemo(() => {
         return words.ids.map((id, index, array) => {
             if (index + 1 === array.length) {
@@ -102,24 +102,24 @@ const Table = ({words, setWords}) => {
 
 
     return (
-        <div className="overflow-x-auto mt-10">
-            <table className="table-auto border-collapse w-full overflow-hidden">
-                <thead>
+
+        <motion.div layout className="overflow-x-auto mt-10">
+            <motion.table layout className="table-auto border-collapse w-full overflow-hidden">
+                <motion.thead layout>
                     <tr>
                         <th className="p-4 border-b-2 border-slate-500" />
                         <th className="p-4 border-b-2 border-slate-500">Original</th>
                         <th className="p-4 border-b-2 border-slate-500">Translation</th>
                         <th className="p-4 border-b-2 border-slate-500">Creation date</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <AnimatePresence>
-                        {elements}
-                        {newInput}
-                    </AnimatePresence>
-                </tbody>
-            </table>
-        </div>
+                </motion.thead>
+                <motion.tbody layout className="bg-red-500">
+                    {elements}
+                    {newInput}
+                </motion.tbody>
+            </motion.table>
+        </motion.div>
+
     )
 }
 
