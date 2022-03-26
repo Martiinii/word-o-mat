@@ -1,9 +1,12 @@
-import Navbar from "../components/Navbar";
+import Head from "next/head";
 
 const FAQ = () => {
   return (
-    <Navbar />
-
+    <>
+      <Head>
+        <title>FAQ</title>
+      </Head>
+    </>
   )
 }
 

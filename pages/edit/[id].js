@@ -1,4 +1,4 @@
-import Template from '../../components/Template'
+import Head from "next/head";
 import NewListContainer from '../../components/NewList/NewListContainer'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
@@ -40,9 +40,12 @@ const EditList = () => {
     }, [title, words]);
 
     return (
-        <Template wrap title={title || 'Editing list'}>
+        <>
+            <Head>
+                <title>{title || 'Editing list'}</title>
+            </Head>
             <NewListContainer ready={lReady} list={list} updateList={updateLocalList} title={title} updateTitle={updateTitle} words={words} updateWords={updateWords} />
-        </Template>
+        </>
     )
 }
 

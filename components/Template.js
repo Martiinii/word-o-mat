@@ -1,15 +1,12 @@
 import Head from "next/head";
 import Navbar from "./Navbar";
 
-const Template = ({ title, children, wrap }) => {
+const Template = ({ children }) => {
     return (
         <>
-            <Head>
-                <title>{title}</title>
-            </Head>
             <Navbar />
             <main
-                className={`flex ${wrap ? 'flex-wrap' : 'flex-col'} gap-1 md:gap-5 p-5 justify-center items-center`}
+                className="flex flex-wrap gap-1 md:gap-5 p-5 justify-center items-center"
             >
                 {children}
             </main>
