@@ -6,7 +6,7 @@ import React from "react";
 const Button = React.forwardRef(({ edit, learn, remove, ...props }, ref) => {
     return (
         <motion.button
-            className={`${learn ? 'text-3xl md:text-5xl p-2 md:p-4' : 'text-3xl p-2 md:p-3'} min-h-full md:min-h-fit rounded-md md:rounded-xl shadow-black/50 shadow-md ${edit ? 'bg-yellow-400' : learn ? 'bg-green-500' : 'bg-rose-700'}`}
+            className={`${learn ? 'text-2xl md:text-5xl p-1 md:p-4' : 'text-2xl md:text-3xl p-1 md:p-3'} min-h-full md:min-h-fit rounded-md md:rounded-xl shadow-black/50 shadow-md ${edit ? 'bg-yellow-400' : learn ? 'bg-green-500' : 'bg-rose-700'}`}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: .9 }}
             ref={ref}
