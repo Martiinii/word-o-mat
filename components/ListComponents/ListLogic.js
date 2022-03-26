@@ -3,7 +3,7 @@ import useListStorage from "../useListStorage";
 import AddCard from "./AddCard";
 import ListItem from "./ListItem";
 
-const ListLogic = () => {
+const ListLogic = ({showOverlay}) => {
     const [ready, getList, lists, createList, removeList] = useListStorage();
 
     return (
@@ -12,7 +12,7 @@ const ListLogic = () => {
             className="flex flex-wrap gap-1 md:gap-5 p-5 justify-center items-center"
         >
             <AnimatePresence>
-                {lists.map(list => <ListItem {...list} key={list.date} removeList={() => { removeList(`l${list.date}`) }} />)}
+                {lists.map(list => <ListItem {...list} key={list.date} removeList={() => showOverlay(list, () => removeList)} />)}
                 <AddCard />
             </AnimatePresence>
             
