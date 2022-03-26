@@ -11,7 +11,7 @@ const ListItem = ({ title, date, words, removeList }) => {
 
     return (
         <ContainerMotion
-            className="grid gap-5 overflow-auto"
+            className="grid gap-2 md:gap-6 overflow-auto"
         >
             <h2 className="col-span-2 md:col-auto font-bold text-md sm:text-xl md:text-xl text-center">{title}</h2>
             <StatItem value={`${words.ids.length} ${words.ids.length == 1 ? 'word' : 'words'}`} />
