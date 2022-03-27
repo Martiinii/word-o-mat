@@ -103,11 +103,11 @@ const Table = ({ words, setWords }) => {
 
     return (
 
-        <motion.div layout className="overflow-x-auto mt-10">
+        <motion.div layout className="overflow-x-auto mt-10 overflow-hidden">
             <motion.table layout className="table-auto border-collapse w-full overflow-hidden">
                 <motion.thead layout>
                     <tr>
-                        <th className="p-4 border-b-2 border-slate-500" />
+                        <th className="p-4 border-b-2 border-slate-500 w-16" />
                         <th className="p-4 border-b-2 border-slate-500">Original</th>
                         <th className="p-4 border-b-2 border-slate-500">Translation</th>
                         <th className="p-4 border-b-2 border-slate-500">Creation date</th>

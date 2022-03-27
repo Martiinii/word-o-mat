@@ -1,15 +1,16 @@
-import Head from "next/head";
 import Navbar from "./Navbar";
+import { motion } from "framer-motion";
 
 const Template = ({ children }) => {
     return (
         <>
             <Navbar />
-            <main
-                className="flex flex-wrap gap-1 md:gap-5 p-5 justify-center items-center"
+            <motion.main
+                layout
+                className="flex flex-wrap gap-1 md:gap-5 p-5 justify-center items-center overflow-x-clip"
             >
                 {children}
-            </main>
+            </motion.main>
         </>
     );
 }
