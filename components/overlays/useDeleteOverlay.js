@@ -23,8 +23,9 @@ const useDeleteOverlay = () => {
 
     const element = (
         <>
-            <span className="font-extrabold text-3xl my-5">Confirmation needed</span>
-            <span className="text-center mb-3">Please confirm, that you really want to remove list named: <b>{list.title}</b>. This action cannot be undone!</span>
+            <span className="text-center font-extrabold text-3xl my-5">Confirmation needed</span>
+            <span className="text-center">Please confirm, that you really want to remove list named: <b>{list.title}</b>.</span>
+            <span className="mb-3">This action cannot be undone!</span>
 
             <div className="grid gap-4 max-w-xs w-full">
                 <button onClick={handleRemove} className="border-4 border-red-600 bg-red-600 text-white font-semibold rounded-xl p-3 transition-all focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-offset-4">Remove</button>
