@@ -11,7 +11,7 @@ const useLearnStyleOverlay = () => {
         <>
             <span className="text-center font-extrabold text-3xl my-5">Choose learning style</span>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <IconButton icon={faLayerGroup} className="bg-yellow-400 hover:bg-amber-400 focus:ring-yellow-400 shadow-yellow-800/60">
                     <span>Flashcards</span>
                 </IconButton>
