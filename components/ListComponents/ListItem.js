@@ -3,7 +3,7 @@ import ContainerMotion from "../ContainerMotion";
 import ButtonsContainer from "./ButtonsContainer";
 import StatItem from "./StatItem";
 
-const ListItem = ({ title, date, words, removeList }) => {
+const ListItem = ({ title, date, words, removeList, startLearning }) => {
     const dateFormatted = useMemo(() => {
         let d = new Date(date);
         return d.toLocaleDateString();
@@ -16,7 +16,7 @@ const ListItem = ({ title, date, words, removeList }) => {
             <h2 className="col-span-2 md:col-auto font-bold text-md sm:text-xl md:text-xl text-center">{title}</h2>
             <StatItem value={`${words.ids.length} ${words.ids.length == 1 ? 'word' : 'words'}`} />
             <StatItem className="row-start-3" value={dateFormatted} />
-            <ButtonsContainer className="row-span-2 md:row-auto" date={date} removeList={removeList} />
+            <ButtonsContainer className="row-span-2 md:row-auto" date={date} removeList={removeList} startLearning={startLearning} />
         </ContainerMotion>
     );
 }
