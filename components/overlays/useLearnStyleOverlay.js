@@ -1,5 +1,5 @@
 import useOverlay from "./useOverlay";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKeyboard, faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
@@ -30,6 +30,7 @@ const useLearnStyleOverlay = () => {
             </div>
         </>
     );
+
 
     useEffect(() => setElement(element), [id]);
 
