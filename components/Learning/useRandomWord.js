@@ -29,7 +29,7 @@ const useRandomWord = l => {
 
 
     const reset = () => {
-
+        setNotUsedWords(wordIds);
     }
 
     return [list, updateList, generateNextWord, currentWord, removeCurrentWord, reset, notUsedWords]
