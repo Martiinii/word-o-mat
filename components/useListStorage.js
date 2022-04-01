@@ -1,12 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import useLocalStorage from './useLocalStorage'
 
 
 const useListStorage = () => {
-    const [listRaw, setListRaw, ready] = useLocalStorage('lists', { ids: [] });
+    const [listRaw, setListRaw, isReady] = useLocalStorage('lists', { ids: [] });
     const [lists, setLists] = useState([]);
 
-    // Helpers
+    // Returns new list with added empty list
     const pushNewList = (id, date) => {
         let temp = {...listRaw};
         temp.ids.push(id);
@@ -15,6 +15,7 @@ const useListStorage = () => {
         return temp;
     };
 
+    // Returns new list with removed list by id
     const removeExistingList = id => {
         let temp = {...listRaw};
         temp.ids = temp.ids.filter(i => i != id);
@@ -23,16 +24,13 @@ const useListStorage = () => {
         return temp;
     }
 
-    const updateLists = () => {
-        setLists(getLists());
-    }
-
-    // Actual functions
+    // Returns list by id
     const getList = id => {
         if(!listRaw?.ids || !listRaw.ids.includes(id)) return {title: 'Untitled list', date: undefined, words: {ids: []}};
         return listRaw[id];
     }
 
+    // Returns all lists
     const getLists = () => {
         let lists = [];
 
@@ -65,17 +63,18 @@ const useListStorage = () => {
         setListRaw(temp);
     }
 
-    const getNewestId = () => {
-        return listRaw.ids.at(-1);
+    // Helper function
+    const updateLists = () => {
+        setLists(getLists());
     }
 
     useEffect(() => {
-        if(ready) {
+        if(isReady) {
             updateLists();
         }
-    }, [ready, listRaw])
+    }, [isReady, listRaw])
 
-    return [ready, getList, lists, createList, removeList, updateList, getNewestId];
+    return [isReady, getList, lists, createList, removeList, updateList];
 }
 
 export default useListStorage;
