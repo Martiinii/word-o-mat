@@ -1,12 +1,13 @@
 import ContainerMotion from "../ContainerMotion"
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import useInput from "../useInput"
 import usePopUp from "./usePopUp";
 
-const TypingElement = (generateNextWord, removeCurrentWord, resetList, currentWord) => {
+const useTypingStyle = (generateNextWord, removeCurrentWord, resetList) => {
     const [inputValue, input, setInputValue] = useInput({ placeholder: "Enter translation", className: "text-center" });
     const [goodPopUp, showGoodPopUp] = usePopUp("bg-green-500 text-lg font-semibold", "Good!", .5);
     const [badPopUp, showBadPopUp] = usePopUp("bg-red-600 text-white text-lg font-semibold", "Incorrect!", .5);
+    const [currentWord, setCurrentWord] = useState('');
 
     const formSubmit = e => {
         e.preventDefault();
@@ -24,7 +25,7 @@ const TypingElement = (generateNextWord, removeCurrentWord, resetList, currentWo
         setInputValue('');
     }
 
-    return (
+    const element = (
         <>
             <ContainerMotion className="flex flex-col gap-10 text-center">
                 {
@@ -48,6 +49,8 @@ const TypingElement = (generateNextWord, removeCurrentWord, resetList, currentWo
         </>
     )
 
+    return [element, setCurrentWord];
+
 }
 
-export default TypingElement;
+export default useTypingStyle;

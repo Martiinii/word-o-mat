@@ -3,24 +3,21 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 import useRandomWord from "../../../components/Learning/useRandomWord";
 import useListStorage from '../../../components/useListStorage';
-import useLearn from "../../../components/Learning/useLearn";
+import useTypingStyle from "../../../components/Learning/useTypingStyle";
 
 const LearnPage = () => {
     const router = useRouter();
 
     const [id, setId] = useState();
-    const [style, setStyle] = useState();
     const [ready, getList] = useListStorage();
     const [list, setRandomList, generateNextWord, currentWord, removeCurrentWord, reset, notUsedWords] = useRandomWord();
 
-    const [element, setHookStyle, setCurrentWord] = useLearn(generateNextWord, removeCurrentWord, reset);
+    const [element, setCurrentWord] = useTypingStyle(generateNextWord, removeCurrentWord, reset);
 
     useEffect(() => {
-        const { id, style } = router.query;
+        const { id } = router.query;
 
         setId(id);
-        setStyle(style);
-        setHookStyle(style);
     }, [router])
 
     // Update container with word list
