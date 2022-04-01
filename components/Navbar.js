@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import ButtonComponent from "./ButtonComponent";
 
 const Navbar = () => {
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -24,12 +25,12 @@ const Navbar = () => {
                 className="container text-slate-600 flex flex-wrap justify-between items-center mx-auto sm:text-xl"
             >
                 <Logo />
-                <button
-                    className="md:hidden p-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-gray-300 hover:bg-slate-100 flex"
+                <ButtonComponent
+                    className="md:hidden p-3 focus:ring-gray-300 hover:bg-slate-100 flex rounded-lg shadow-none"
                     onClick={toggleVisibility}
                 >
                     <FontAwesomeIcon icon={faBars} />
-                </button>
+                </ButtonComponent>
                 <NavContainer visibility={mobileMenuVisible}>
                     {links.map(link => <NavItem {...link} key={link.value} />)}
                 </NavContainer>
@@ -39,23 +40,26 @@ const Navbar = () => {
 }
 
 const Logo = () => {
+    const router = useRouter();
+
     return (
-        <div
+        <button
             className="rounded-full shadow-zinc-500 shadow-md"
+            onClick={() => router.push('/')}
         >
             <img
                 className="h-14 sm:h-20 m-1 sm:m-3"
                 src="/images/logo.svg"
             />
-        </div>
+        </button>
     );
 }
 
 const NavContainer = ({ children, visibility }) => {
     return (
-        <div className={`${!visibility && 'hidden'} w-full md:block md:w-auto`}>
+        <div className={`${!visibility ? 'hidden' : ''} w-full md:block md:w-auto`}>
             <ul
-                className="flex flex-col mt-4 md:flex-row md:space-x-20 md:mt-0 font-medium uppercase"
+                className="flex flex-col gap-2 mt-4 md:flex-row md:gap-16 md:mt-0 font-medium uppercase"
             >
                 {children}
             </ul>
@@ -70,7 +74,7 @@ const NavItem = ({ href, value }) => {
         <li>
             <Link href={href}>
                 <a
-                    className={`block py-2 px-4 ${router.asPath == href ? 'text-white bg-sky-500 md:text-blue-500 md:bg-transparent' : 'text-slate-600 bg-transparent '} rounded md:p-0 font-bold`}
+                    className={`block py-2 px-4 ${router.asPath == href ? 'text-white bg-sky-500 md:text-blue-500 md:bg-transparent' : 'text-slate-600 bg-transparent '} rounded md:p-1 font-bold`}
                 >{value}</a>
             </Link>
         </li>

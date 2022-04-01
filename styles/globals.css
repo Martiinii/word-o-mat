@@ -32,4 +32,8 @@ body {
     .cont {
         @apply bg-white m-2 p-3 md:m-5 md:p-5 rounded-xl md:rounded-3xl shadow-black/50 shadow-lg w-fit font-medium;
     }
+
+    .btn {
+        @apply font-semibold rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-offset-4 shadow-md shadow-slate-700/30 transition-all;
+    }
 }

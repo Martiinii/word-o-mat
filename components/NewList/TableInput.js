@@ -2,6 +2,7 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
+import ButtonComponent from "../ButtonComponent";
 
 const TableInput = ({ original, setOriginal, translation, setTranslation, date, handleClick, orgRef, transRef }) => {
 
@@ -26,9 +27,9 @@ const TableInput = ({ original, setOriginal, translation, setTranslation, date, 
             layout
         >
             <motion.td className="border-b p-1 border-slate-300">
-                <button onClick={handleClick} className="bg-red-600 text-white p-3 px-4 rounded-xl shadow-slate-400/50 shadow hover:bg-red-700 transition-all focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-offset-2 duration-300">
+                <ButtonComponent onClick={handleClick} className="py-2 md:p-3 md:px-4 bg-red-600 text-white shadow-slate-400/50 hover:bg-red-700 focus:ring-red-800">
                     <FontAwesomeIcon icon={faClose} />
-                </button>
+                </ButtonComponent>
             </motion.td>
 
             <motion.td className="p-4 border-b border-slate-300">

@@ -44,7 +44,7 @@ const LearnPage = () => {
     return (
         <>
             <Head>
-                <title>Learning</title>
+                <title>Learning - {list?.title || "Untitled list"}</title>
             </Head>
 
             {element}

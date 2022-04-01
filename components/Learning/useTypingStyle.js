@@ -2,6 +2,7 @@ import ContainerMotion from "../ContainerMotion"
 import { useState } from "react";
 import useInput from "../useInput"
 import usePopUp from "./usePopUp";
+import ButtonComponent from "../ButtonComponent"
 
 const useTypingStyle = (generateNextWord, removeCurrentWord, resetList) => {
     const [inputValue, input, setInputValue] = useInput({ placeholder: "Enter translation", className: "text-center" });
@@ -34,12 +35,12 @@ const useTypingStyle = (generateNextWord, removeCurrentWord, resetList) => {
                             <span className="text-xl font-semibold">{currentWord.orig}</span>
                             <form className="flex flex-col gap-6" onSubmit={formSubmit}>
                                 {input}
-                                <button className="bg-green-300 p-3 rounded-xl font-bold hover:bg-green-500 hover:ring-4 hover:ring-offset-4 hover:ring-green-500 transition-all">Submit</button>
+                                <ButtonComponent className="bg-green-400 hover:bg-green-500 focus:ring-green-400">Submit</ButtonComponent>
                             </form>
                         </>
                         : <>
                             <span className="text-2xl font-semibold m-3">End of learning!</span>
-                            <button className="bg-emerald-300 font-semibold p-4 rounded-xl shadow-md shadow-emerald-800/60" onClick={resetList}>Learn again</button>
+                            <ButtonComponent className="bg-emerald-400 hover:bg-emerald-500 focus:ring-emerald-400" onClick={resetList}>Learn again</ButtonComponent>
                         </>
                 }
             </ContainerMotion>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKeyboard, faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import ButtonComponent from "../ButtonComponent";
 
 
 const useLearnStyleOverlay = () => {
@@ -40,10 +41,10 @@ const useLearnStyleOverlay = () => {
 
 const IconButton = ({ icon, children, className, onClick }) => {
     return (
-        <button className={`p-3 md:p-5 rounded-xl flex flex-col gap-4 items-center justify-center transition-all focus:outline-none focus:ring-4 focus:ring-offset-4 shadow-md ${className}`} onClick={onClick}>
+        <ButtonComponent className={`md:p-5 flex flex-col gap-4 items-center justify-center ${className}`} onClick={onClick}>
             <FontAwesomeIcon className="text-5xl" fixedWidth icon={icon} />
             {children}
-        </button>
+        </ButtonComponent>
     );
 }
 

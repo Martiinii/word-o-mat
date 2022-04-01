@@ -1,6 +1,6 @@
 import useOverlay from "./useOverlay";
 import { useEffect, useState } from "react";
-
+import ButtonComponent from "../ButtonComponent";
 
 const useDeleteOverlay = () => {
     const [overlay, showOverlay, hideOverlay, visible, setElement] = useOverlay(null, "max-w-md");
@@ -28,8 +28,8 @@ const useDeleteOverlay = () => {
             <span className="mb-3">This action cannot be undone!</span>
 
             <div className="grid gap-4 max-w-xs w-full">
-                <button onClick={handleRemove} className="border-4 border-red-600 bg-red-600 text-white font-semibold rounded-xl p-3 transition-all focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-offset-4">Remove</button>
-                <button onClick={hideOverlay} className="border-4 border-orange-500 text-orange-700 font-semibold rounded-xl p-3 hover:bg-orange-500 focus:bg-orange-500 hover:text-white focus:text-white transition-all focus:outline-none focus:ring-4 focus:ring-orange-400 focus:ring-offset-4">Cancel</button>
+                <ButtonComponent onClick={handleRemove} className="bg-red-600 text-white hover:bg-red-700 focus:ring-red-400 ">Remove</ButtonComponent>
+                <ButtonComponent onClick={hideOverlay} className="bg-orange-500 text-white hover:bg-orange-600 focus:ring-orange-400">Cancel</ButtonComponent>
             </div>
         </>
     );
