@@ -1,13 +1,18 @@
-import Link from "next/link";
+import { useContext } from "react";
 import Button from "./Button";
+import ListContext from "./ListContext";
+import { useRouter } from "next/router";
 
-const ButtonsContainer = ({ date, removeList, startLearning, className }) => {
+const ButtonsContainer = ({ list, className }) => {
+    const fn = useContext(ListContext);
+    const router = useRouter();
+
     return (
         <div
             className={`flex flex-row items-center gap-2 md:gap-5 md:items-start ${className}`}>
-            <Link href={`/edit/l${date}`} passHref><Button edit /></Link>
-            <Button learn onClick={() => startLearning(`l${date}`)} />
-            <Button remove onClick={removeList} />
+            <Button edit onClick={() => router.push(`/edit/l${list.date}`)} />
+            <Button learn onClick={() => fn.showLearnOverlay(`l${list.date}`)} />
+            <Button remove onClick={() => fn.showRemoveOverlay(list, () => fn.removeList)} />
         </div>
     );
 }

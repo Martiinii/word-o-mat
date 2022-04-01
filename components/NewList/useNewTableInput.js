@@ -1,6 +1,7 @@
 import useInput from "../useInput";
 import { motion } from "framer-motion";
-const useNewInput = () => {
+
+const useNewTableInput = () => {
     const [original, originalInput, setOriginal] = useInput({ placeholder: 'Original' });
     const [translation, translationInput, setTranslation] = useInput({ placeholder: 'Translation' });
 
@@ -25,4 +26,4 @@ const useNewInput = () => {
     return [element, original, originalInput, translation, translationInput, reset];
 }
 
-export default useNewInput;
+export default useNewTableInput;

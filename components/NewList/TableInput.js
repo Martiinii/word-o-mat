@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 
-const ExistingInput = ({ original, setOriginal, translation, setTranslation, date, handleClick, orgRef, transRef }) => {
+const TableInput = ({ original, setOriginal, translation, setTranslation, date, handleClick, orgRef, transRef }) => {
 
     const localOriginalChange = e => {
         setOriginal(`w${date}`, e.target.value);
@@ -20,9 +20,9 @@ const ExistingInput = ({ original, setOriginal, translation, setTranslation, dat
 
     return (
         <motion.tr
-            initial={{opacity: 0, scale: .7}}
-            animate={{opacity: 1, scale: 1}}
-            transition={{duration: .3}}
+            initial={{ opacity: 0, scale: .7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: .3 }}
             layout
         >
             <motion.td className="border-b p-1 border-slate-300">
@@ -35,7 +35,7 @@ const ExistingInput = ({ original, setOriginal, translation, setTranslation, dat
                 <input
                     placeholder="Original"
                     value={original}
-                    className="bg-indigo-50 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-indigo-100 focus:ring-offset-4 text-indigo-900 p-1 px-2 font-medium w-36 md:font-medium md:text-lg md:p-2 md:px-4 md:w-fit transition-all"
+                    className="in"
                     onChange={localOriginalChange}
                     ref={orgRef}
                 />
@@ -45,7 +45,7 @@ const ExistingInput = ({ original, setOriginal, translation, setTranslation, dat
                 <input
                     placeholder="Translation"
                     value={translation}
-                    className="bg-indigo-50 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-indigo-100 focus:ring-offset-4 text-indigo-900 p-1 px-2 font-medium w-36 md:font-medium md:text-lg md:p-2 md:px-4 md:w-fit transition-all"
+                    className="in"
                     onChange={localTranslationChange}
                     ref={transRef}
                 />
@@ -56,4 +56,4 @@ const ExistingInput = ({ original, setOriginal, translation, setTranslation, dat
     );
 }
 
-export default ExistingInput;
+export default TableInput;

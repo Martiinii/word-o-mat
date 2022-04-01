@@ -9,9 +9,10 @@ const EditList = () => {
     const router = useRouter();
 
     const [id, setId] = useState()
-    const [ready, getList, lists, createList, removeList, updateList, getNewestId] = useListStorage();
-    const [lReady, setlReady, list, updateLocalList, title, updateTitle, words, updateWords] = useLocalList(getList(id));
+    const [isReady, getList, lists, createList, removeList, updateList] = useListStorage();
+    const [isLocalReady, setLocalReady, list, updateLocalList, title, updateTitle, words, updateWords] = useLocalList(getList(id));
 
+    // Set id from router
     useEffect(() => {
         const { id } = router.query;
         setId(id);
@@ -19,22 +20,22 @@ const EditList = () => {
 
     // Update id
     useEffect(() => {
-        if (ready && id == 'new') {
+        if (isReady && id == 'new') {
             const newId = createList();
             setId(newId);
         }
-    }, [router, ready, id]);
+    }, [router, isReady, id]);
 
     // Update container with word list
     useEffect(() => {
-        if (ready && id) {
+        if (isReady && id) {
             updateLocalList(getList(id));
-            setlReady();
+            setLocalReady();
         }
-    }, [id, ready]);
+    }, [id, isReady]);
 
     useEffect(() => {
-        if (ready && lReady) {
+        if (isReady && isLocalReady) {
             updateList(id, list);
         }
     }, [title, words]);
@@ -44,7 +45,7 @@ const EditList = () => {
             <Head>
                 <title>{title || 'Editing list'}</title>
             </Head>
-            <NewListContainer ready={lReady} list={list} updateList={updateLocalList} title={title} updateTitle={updateTitle} words={words} updateWords={updateWords} />
+            <NewListContainer ready={isLocalReady} list={list} updateList={updateLocalList} title={title} updateTitle={updateTitle} words={words} updateWords={updateWords} />
         </>
     )
 }

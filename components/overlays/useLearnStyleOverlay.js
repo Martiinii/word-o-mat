@@ -1,5 +1,5 @@
 import useOverlay from "./useOverlay";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKeyboard, faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";

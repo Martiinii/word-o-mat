@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 
 const useLocalStorage = (key, initialValue) => {
     const [storedValue, setStoredValue] = useState(initialValue);
-    const [ready, setReady] = useState(false);
+    const [isReady, setIsReady] = useState(false);
 
     const initialize = (key) => {
         try {
@@ -24,7 +24,7 @@ const useLocalStorage = (key, initialValue) => {
     }, []);
 
     useEffect(() => {
-        setReady(true);
+        setIsReady(true);
     }, []);
 
 
@@ -40,7 +40,7 @@ const useLocalStorage = (key, initialValue) => {
     }, [key, setStoredValue]);
 
 
-    return [storedValue, setValue, ready];
+    return [storedValue, setValue, isReady];
 }
 
 

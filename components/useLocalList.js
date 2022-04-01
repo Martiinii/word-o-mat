@@ -4,7 +4,7 @@ const useLocalList = lsList => {
     const [list, setList] = useState(lsList ?? {title: '', date: undefined, words: {}});
     const [title, setTitle] = useState(lsList?.title ?? '');
     const [words, setWords] = useState(list?.words ?? {ids: []});
-    const [ready, setReady] = useState(false);
+    const [isReady, setIsReady] = useState(false);
 
     const updateList = list => {
         setList(list);
@@ -26,11 +26,11 @@ const useLocalList = lsList => {
         setList(temp);
     }
 
-    const setLocalReady = () => {
-        setReady(true);
+    const setReady = () => {
+        setIsReady(true);
     }
 
-    return [ready, setLocalReady, list, updateList, title, updateTitle, words, updateWords];
+    return [isReady, setReady, list, updateList, title, updateTitle, words, updateWords];
 }
 
 export default useLocalList;

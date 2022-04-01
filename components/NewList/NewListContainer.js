@@ -4,7 +4,7 @@ import useInput from '../useInput';
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 
-const NewListContainer = ({ ready, list, updateList, title, updateTitle, words, updateWords }) => {
+const NewListContainer = ({ ready, title, updateTitle, words, updateWords }) => {
     const [titleInputValue, titleInput, setTitleInput] = useInput({ placeholder: 'Title', className: 'text-center' })
 
     useEffect(() => {
@@ -17,7 +17,6 @@ const NewListContainer = ({ ready, list, updateList, title, updateTitle, words, 
 
 
     return (
-
         <ContainerMotion className="max-w-full text-center bg-white p-5">
             <motion.div layout>
                 {titleInput}

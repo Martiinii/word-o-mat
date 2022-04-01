@@ -1,6 +1,6 @@
 import { motion, useAnimation } from "framer-motion";
 import useScrollLock from "./useScrollLock"
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Container from "../Container";
 
 const useOverlay = (children, className = "") => {
@@ -23,6 +23,7 @@ const useOverlay = (children, className = "") => {
         }
     }
 
+    // (Disable Events) variants
     const variantsDE = {
         visible: {
             display: 'inline',

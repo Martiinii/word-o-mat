@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import useNewInput from "./useNewInput";
-import ExistingInput from "./ExistingInput"
+import useNewTableInput from "./useNewTableInput";
+import TableInput from "./TableInput"
 import { motion } from "framer-motion";
 
 const Table = ({ words, setWords }) => {
-    const [newInput, original, originalInput, translation, translationInput, resetInputs] = useNewInput();
+    const [newInput, original, originalInput, translation, translationInput, resetInputs] = useNewTableInput();
 
     const newestInput = useRef(null);
     const [wasOrig, setWasOrig] = useState(null);
@@ -62,7 +62,7 @@ const Table = ({ words, setWords }) => {
                 }
 
                 return (
-                    <ExistingInput
+                    <TableInput
                         date={words[id].date}
                         original={words[id].orig}
                         translation={words[id].trans}
@@ -77,7 +77,7 @@ const Table = ({ words, setWords }) => {
                 )
             } else {
                 return (
-                    <ExistingInput
+                    <TableInput
                         date={words[id].date}
                         original={words[id].orig}
                         translation={words[id].trans}
