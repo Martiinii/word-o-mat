@@ -1,4 +1,4 @@
-#Word-o-mat
+# Word-o-mat
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 With this app you can revise words for exams or learn hard topics with flashcards!
