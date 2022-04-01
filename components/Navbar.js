@@ -21,7 +21,7 @@ const Navbar = () => {
             className="bg-white px-4 py-3 rounded-b-lg"
         >
             <div
-                className="container flex flex-wrap justify-between items-center mx-auto sm:text-xl text-slate-600"
+                className="container text-slate-600 flex flex-wrap justify-between items-center mx-auto sm:text-xl"
             >
                 <Logo />
                 <button
