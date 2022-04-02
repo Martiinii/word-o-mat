@@ -10,9 +10,9 @@ const LearnPage = () => {
 
     const [id, setId] = useState();
     const [ready, getList] = useListStorage();
-    const [list, setRandomList, generateNextWord, currentWord, removeCurrentWord, reset, notUsedWords] = useRandomWord();
+    const [list, setRandomList, generateNextWord, currentWord, removeCurrentWord, reset, notUsedWords, stats] = useRandomWord();
 
-    const [element, setCurrentWord] = useTypingStyle(generateNextWord, removeCurrentWord, reset);
+    const [element, setCurrentWord] = useTypingStyle(generateNextWord, removeCurrentWord, reset, stats);
 
     useEffect(() => {
         const { id } = router.query;
