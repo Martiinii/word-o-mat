@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useInput from "../useInput"
 import usePopUp from "./usePopUp";
 import ButtonComponent from "../ButtonComponent"
-import useDynamicStat from "./useDynamicStat";
+import useDisplayStat from "./useDisplayStat";
 
 const useTypingStyle = (generateNextWord, removeCurrentWord, resetList, stats) => {
     const [inputValue, input, setInputValue] = useInput({ placeholder: "Enter translation", className: "text-center" });
@@ -11,12 +11,7 @@ const useTypingStyle = (generateNextWord, removeCurrentWord, resetList, stats) =
     const [badPopUp, showBadPopUp] = usePopUp("bg-red-600 text-white text-lg font-semibold", "Incorrect!", .5);
     const [currentWord, setCurrentWord] = useState('');
 
-    const [stat, setStat] = useDynamicStat();
-
-    useEffect(() => {
-        let mistakes = stats.amount - stats.total;
-        setStat(`${mistakes} ${mistakes == 1 ? "mistake" : "mistakes"}`)
-    }, [stats])
+    const [displayStat] = useDisplayStat(stats, resetList);
 
     const formSubmit = e => {
         e.preventDefault();
@@ -36,22 +31,18 @@ const useTypingStyle = (generateNextWord, removeCurrentWord, resetList, stats) =
 
     const element = (
         <>
-            <ContainerMotion className="flex flex-col gap-10 text-center">
+            <ContainerMotion className="flex flex-col max-w-xl items-center text-center gap-10">
                 {
                     currentWord
                         ? <>
                             <span className="text-xl font-semibold">{currentWord.orig}</span>
                             <form className="flex flex-col gap-6" onSubmit={formSubmit}>
                                 {input}
-                                <ButtonComponent className="bg-green-400 hover:bg-green-500 focus:ring-green-400">Submit</ButtonComponent>
+                                <ButtonComponent className="bg-green-500 hover:bg-green-600 focus:ring-green-500">Submit</ButtonComponent>
 
                             </form>
                         </>
-                        : <>
-                            <span className="text-2xl font-semibold m-3">End of learning!</span>
-                            {stat}
-                            <ButtonComponent className="bg-emerald-400 hover:bg-emerald-500 focus:ring-emerald-400" onClick={resetList}>Learn again</ButtonComponent>
-                        </>
+                        : <>{displayStat}</>
                 }
             </ContainerMotion>
 
