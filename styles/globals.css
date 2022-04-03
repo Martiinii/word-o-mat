@@ -40,4 +40,14 @@ body {
     .stat {
         @apply bg-sky-200 px-2 py-2 md:py-3 md:px-5 w-full text-center rounded-full sm:text-xl;
     }
+
+    .perspective {
+        perspective: 1000px;
+
+    }
+    .perspective-card {
+        @apply flex justify-center items-center relative m-0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
 }
