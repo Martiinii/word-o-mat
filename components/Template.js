@@ -7,7 +7,7 @@ const Template = ({ children }) => {
             <Navbar />
             <motion.main
                 layout
-                className="flex flex-wrap gap-1 md:gap-5 p-5 justify-center items-center overflow-x-clip"
+                className="flex flex-col gap-1 md:gap-5 p-5 justify-center items-center overflow-x-clip"
             >
                 {children}
             </motion.main>
