@@ -45,6 +45,7 @@ body {
         perspective: 1000px;
 
     }
+    
     .perspective-card {
         @apply flex justify-center items-center relative m-0;
         backface-visibility: hidden;
