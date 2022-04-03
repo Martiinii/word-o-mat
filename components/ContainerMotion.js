@@ -5,7 +5,7 @@ const ContainerMotion = ({ children, className, ...props }) => {
     return (
         <motion.div
             layout
-            className={`cont ${className}`}
+            className={`cont ${className ?? ""}`}
             initial={{scale: 1, opacity: 0}}
             animate={{opacity: 1}}
             exit={{scale: .5, opacity: 0}}
