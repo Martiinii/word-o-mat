@@ -1,7 +1,7 @@
 const StatItem = ({ value, className }) => {
     return (
         <div
-            className={`stat ${className}`}
+            className={`stat ${className ?? ""}`}
         >
             <span>{value}</span>
         </div>
