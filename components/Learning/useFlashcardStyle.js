@@ -93,11 +93,11 @@ const useFlashcardStyle = (generateNextWord, removeCurrentWord, resetList, stats
                             <motion.div className="relative perspective grid grid-cols-2 text-center text-xl font-semibold" layout>
 
                                 <ContainerMotion transition={{ type: "ease-in", duration: .7 }} className="perspective-card w-[200%]" layout variants={variantsFront} initial="visible" animate={frontControls}>
-                                    <span>{currentWord.orig}</span>
+                                    <motion.span>{currentWord.orig}</motion.span>
                                 </ContainerMotion>
 
                                 <ContainerMotion transition={{ type: "ease-in", duration: .7 }} className="perspective-card w-[200%]" layout variants={variantsBack} initial="hidden" animate={backControls}>
-                                    <span>{currentWord.trans}</span>
+                                    <motion.span>{currentWord.trans}</motion.span>
                                 </ContainerMotion>
 
                             </motion.div>
