@@ -22,11 +22,11 @@ const useLearnStyleOverlay = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <IconButton icon={faLayerGroup} className="bg-yellow-400 hover:bg-amber-400 focus:ring-yellow-400 shadow-yellow-800/60" onClick={() => router.push(`/learn/flashcards/${id}`)}>
-                    <span>Flashcards</span>
+                    <span className="opacity-80">Flashcards</span>
                 </IconButton>
 
                 <IconButton icon={faKeyboard} className="bg-sky-400 hover:bg-sky-500 focus:ring-sky-300 shadow-sky-800/60" onClick={() => router.push(`/learn/typing/${id}`)}>
-                    <span>Typing</span>
+                    <span className="opacity-80">Typing</span>
                 </IconButton>
             </div>
         </>
@@ -41,8 +41,8 @@ const useLearnStyleOverlay = () => {
 
 const IconButton = ({ icon, children, className, onClick }) => {
     return (
-        <ButtonComponent className={`md:p-5 flex flex-col gap-4 items-center justify-center ${className}`} onClick={onClick}>
-            <FontAwesomeIcon className="text-5xl" fixedWidth icon={icon} />
+        <ButtonComponent className={`md:p-5 flex flex-col gap-4 items-center justify-center font-bold ${className}`} onClick={onClick}>
+            <FontAwesomeIcon className="text-5xl opacity-70" fixedWidth icon={icon} />
             {children}
         </ButtonComponent>
     );

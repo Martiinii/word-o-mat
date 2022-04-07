@@ -11,10 +11,10 @@ const Button = ({ edit, learn, remove, ...props }) => {
             {...props}
         >
             {edit
-                ? <FontAwesomeIcon className="opacity-60 fa-fw" icon={faPenToSquare} />
+                ? <FontAwesomeIcon className="opacity-70 fa-fw" icon={faPenToSquare} />
                 : learn
-                    ? <FontAwesomeIcon className="opacity-60 fa-fw" icon={faBook} />
-                    : <FontAwesomeIcon className="opacity-60 fa-fw" icon={faTrashCan} />
+                    ? <FontAwesomeIcon className="opacity-70 fa-fw" icon={faBook} />
+                    : <FontAwesomeIcon className="opacity-70 fa-fw" icon={faTrashCan} />
             }
 
         </ButtonComponent>

@@ -104,11 +104,11 @@ const useFlashcardStyle = (generateNextWord, removeCurrentWord, resetList, stats
 
                             <div className="flex w-full justify-center gap-4 text-4xl">
                                 <ButtonComponent className="bg-sky-400 hover:bg-sky-500 focus:ring-sky-400" onClick={rotate}>
-                                    <FontAwesomeIcon className="opacity-60" icon={faRotateLeft} fixedWidth />
+                                    <FontAwesomeIcon className="opacity-70" icon={faRotateLeft} fixedWidth />
                                 </ButtonComponent>
 
                                 <ButtonComponent className="bg-green-500 hover:bg-green-600 focus:ring-green-500" onClick={nextWord}>
-                                    <FontAwesomeIcon className="opacity-60" icon={faCircleCheck} fixedWidth />
+                                    <FontAwesomeIcon className="opacity-70" icon={faCircleCheck} fixedWidth />
                                 </ButtonComponent>
                             </div>
                         </>
