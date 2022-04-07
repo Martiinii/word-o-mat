@@ -1,5 +1,5 @@
 import ContainerMotion from "../ContainerMotion"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useInput from "../useInput"
 import usePopUp from "./usePopUp";
 import ButtonComponent from "../ButtonComponent"
@@ -7,9 +7,10 @@ import useDisplayStat from "./useDisplayStat";
 
 const useTypingStyle = (generateNextWord, removeCurrentWord, resetList, stats) => {
     const [inputValue, input, setInputValue] = useInput({ placeholder: "Enter translation", className: "text-center" });
-    const [goodPopUp, showGoodPopUp] = usePopUp("bg-green-500 text-lg font-semibold", "Good!", .5);
-    const [badPopUp, showBadPopUp] = usePopUp("bg-red-600 text-white text-lg font-semibold", "Incorrect!", .5);
     const [currentWord, setCurrentWord] = useState('');
+
+    const [goodPopUp, showGoodPopUp] = usePopUp("bg-green-500 text-lg font-semibold", "Good!", .5);
+    const [badPopUp, showBadPopUp] = usePopUp("bg-red-600 text-white text-lg font-semibold", `Incorrect!`, 1);
 
     const [displayStat] = useDisplayStat(stats, resetList);
 
@@ -18,12 +19,12 @@ const useTypingStyle = (generateNextWord, removeCurrentWord, resetList, stats) =
 
         if (!inputValue.trim()) return;
 
-        if (inputValue.trim() == currentWord.trans) {
-            removeCurrentWord();
+        if (inputValue.trim() == currentWord.trans) {         
             showGoodPopUp();
+            removeCurrentWord();
         } else {
+            showBadPopUp(`Incorrect! Correct form: ${currentWord.trans}`);
             generateNextWord();
-            showBadPopUp();
         }
 
         setInputValue('');

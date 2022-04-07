@@ -1,14 +1,16 @@
 import { motion, useAnimation } from "framer-motion";
-import ContainerMotion from "../ContainerMotion";
-
+import { useState } from "react";
 const usePopUp = (className, text, duration) => {
+    const [localText, setLocalText] = useState(text);
+
     const variants = {
-        hidden: { x: "-50%", y: "-200%", transition: {delay: duration}, transitionEnd: {visibility: "hidden"} },
+        hidden: { x: "-50%", y: "-200%", transition: { delay: duration }, transitionEnd: { visibility: "hidden" } },
         visible: { y: "0", visibility: "visible", transition: { duration: 1, type: "spring", stiffness: 80 } }
     }
     const controls = useAnimation();
 
-    const animate = async () => {
+    const animate = async (text) => {
+        if(text) setLocalText(text);
         await controls.start("visible");
         controls.start("hidden");
     }
@@ -23,7 +25,7 @@ const usePopUp = (className, text, duration) => {
                 initial="hidden"
                 animate={controls}
             >
-                <span>{text}</span>
+                <span>{localText}</span>
             </motion.div>
         </>
     )
