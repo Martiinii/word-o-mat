@@ -1,4 +1,5 @@
 import Head from "next/head";
+import ContainerMotion from "../components/ContainerMotion";
 
 const About = () => {
   return (
@@ -6,6 +7,10 @@ const About = () => {
       <Head>
         <title>About</title>
       </Head>
+      <ContainerMotion>
+        <h1 className="text-3xl">Welcome to <b>Word-o-mat</b>!</h1>
+      </ContainerMotion>
+
     </>
   )
 }
