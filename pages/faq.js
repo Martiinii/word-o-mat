@@ -41,7 +41,7 @@ const FAQ = () => {
       <ContainerMotion className="grid grid-rows-1 max-w-6xl">
         {faq.map(o => {
           return (
-            <ContainerMotion className="flex flex-col gap-2 w-auto shadow-black/20 odd:bg-neutral-100 even:bg-zinc-100">
+            <ContainerMotion key={o.question} className="flex flex-col gap-2 w-auto shadow-black/20 odd:bg-neutral-100 even:bg-zinc-100">
               <p className="text-xl md:text-3xl font-bold">{o.question}</p>
               <hr />
               <span>{o.answer}</span>
