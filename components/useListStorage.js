@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import useLocalStorage from './useLocalStorage'
 
 
@@ -31,7 +31,7 @@ const useListStorage = () => {
     }
 
     // Returns all lists
-    const getLists = () => {
+    const getLists = useCallback(() => {
         let lists = [];
 
         listRaw.ids.forEach(id => {
@@ -39,7 +39,7 @@ const useListStorage = () => {
         })
 
         return lists;
-    }
+    }, [listRaw]);
 
     const createList = () => {
         const date = Date.now();
@@ -63,16 +63,11 @@ const useListStorage = () => {
         setListRaw(temp);
     }
 
-    // Helper function
-    const updateLists = () => {
-        setLists(getLists());
-    }
-
     useEffect(() => {
         if(isReady) {
-            updateLists();
+            setLists(getLists());
         }
-    }, [isReady, listRaw])
+    }, [isReady, getLists])
 
     return [isReady, getList, lists, createList, removeList, updateList];
 }

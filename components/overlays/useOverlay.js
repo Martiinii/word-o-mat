@@ -1,6 +1,6 @@
 import { motion, useAnimation } from "framer-motion";
 import useScrollLock from "./useScrollLock"
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Container from "../Container";
 
 const useOverlay = (children, className = "") => {
@@ -45,14 +45,14 @@ const useOverlay = (children, className = "") => {
         controls.start("visible");
     }
 
-    const hideOverlay = async (e) => {
+    const hideOverlay = useCallback(async () => {
         setVisible(false);
         disableEvents.start("visible");
 
         await controls.start("hidden");
         setScrollLocked(false);
         await disableEvents.start("hidden");
-    }
+    }, [controls, disableEvents, setScrollLocked]);
 
     let element = (
         <>
