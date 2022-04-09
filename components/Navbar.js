@@ -1,5 +1,6 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -44,13 +45,14 @@ const Logo = () => {
 
     return (
         <button
-            className="rounded-full shadow-zinc-500 shadow-md"
+            className="rounded-full shadow-zinc-500 shadow-md p-1 sm:p-3 flex"
             onClick={() => router.push('/')}
         >
-            <img
-                className="h-14 sm:h-20 m-1 sm:m-3"
+            <Image
                 src="/images/logo.svg"
                 alt=""
+                width={65}
+                height={65}
             />
         </button>
     );
