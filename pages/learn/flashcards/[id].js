@@ -25,20 +25,20 @@ const LearnPage = () => {
         if (ready && id) {
             setRandomList(getList(id));
         }
-    }, [id, ready]);
+    }, [id, ready, setRandomList, getList]);
 
     // If local list is ready or if word is removed then generate new word
     useEffect(() => {
         if (ready) {
             generateNextWord();
         }
-    }, [notUsedWords]);
+    }, [ready, generateNextWord]); //generateNextWord is dependend of 'notUsedWords'
 
     useEffect(() => {
         if(ready) {
             setCurrentWord(currentWord);
         }
-    }, [currentWord]);
+    }, [ready, setCurrentWord, currentWord]);
 
 
     return (

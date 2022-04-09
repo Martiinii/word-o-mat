@@ -33,16 +33,15 @@ const useLocalStorage = (key, initialValue) => {
 
     const setValue = useCallback((value) => {
         try {
-            const valueToStore = value instanceof Function ? value(storedValue) : value;
-
-            setStoredValue(valueToStore);
-            window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            setStoredValue(value);
         } catch (error) {
             console.error(error);
         }
+    }, [setStoredValue]);
 
-    }, [key, setStoredValue, storedValue]);
-
+    useEffect(() => {
+        window.localStorage.setItem(key, JSON.stringify(storedValue));
+    }, [key, storedValue])
 
     return [storedValue, setValue, isReady];
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useLocalList = lsList => {
     const [list, setList] = useState(lsList ?? {title: '', date: undefined, words: {}});
@@ -6,18 +6,17 @@ const useLocalList = lsList => {
     const [words, setWords] = useState(list?.words ?? {ids: []});
     const [isReady, setIsReady] = useState(false);
 
-    const updateList = list => {
+    const updateList = useCallback((list) => {
         setList(list);
         list?.title != null && setTitle(list.title);
         list?.words != null && setWords(list.words);
-    }
+    }, []);
 
-    const updateTitle = newTitle => {
-        let temp = {...list};
-        temp.title = newTitle;
+    const updateTitle = useCallback((newTitle) => {
+        list.title = newTitle;
         setTitle(newTitle);
-        setList(temp);
-    }
+        setList(list);
+    }, [list]);
 
     const updateWords = newWords => {
         let temp = {...list};
@@ -26,9 +25,9 @@ const useLocalList = lsList => {
         setList(temp);
     }
 
-    const setReady = () => {
+    const setReady = useCallback(() => {
         setIsReady(true);
-    }
+    }, []);
 
     return [isReady, setReady, list, updateList, title, updateTitle, words, updateWords];
 }

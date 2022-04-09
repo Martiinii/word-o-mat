@@ -1,14 +1,15 @@
 import useInput from "../useInput";
 import { motion } from "framer-motion";
+import { useCallback } from "react";
 
 const useNewTableInput = () => {
     const [original, originalInput, setOriginal] = useInput({ placeholder: 'Original' });
     const [translation, translationInput, setTranslation] = useInput({ placeholder: 'Translation' });
 
-    const reset = () => {
+    const reset = useCallback(() => {
         setOriginal('');
         setTranslation('');
-    }
+    }, [setOriginal, setTranslation]);
 
     const element = (
         <motion.tr

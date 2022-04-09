@@ -1,7 +1,7 @@
 import ContainerMotion from "../ContainerMotion"
 import Table from "./Table";
 import useInput from '../useInput';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ButtonComponent from "../ButtonComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,13 +10,19 @@ import { faRotate } from "@fortawesome/free-solid-svg-icons";
 const NewListContainer = ({ ready, title, updateTitle, words, updateWords }) => {
     const [titleInputValue, titleInput, setTitleInput] = useInput({ placeholder: 'Title', className: 'text-center' })
 
-    useEffect(() => {
-        setTitleInput(title);
-    }, [ready]);
+    const [firstLoad, setFirstLoad] = useState(false);
 
     useEffect(() => {
-        updateTitle(titleInputValue);
-    }, [titleInputValue]);
+        if(ready && !firstLoad) {
+            setTitleInput(title);
+            setFirstLoad(true);
+        }
+    }, [ready, title, setTitleInput, firstLoad]);
+
+    useEffect(() => {
+        updateTitle(titleInputValue)
+    }, [titleInputValue, updateTitle]);
+
 
     const flipWords = () => {
         let temp = { ...words };

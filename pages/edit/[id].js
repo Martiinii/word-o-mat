@@ -8,7 +8,7 @@ import useLocalList from '../../components/useLocalList'
 const EditList = () => {
     const router = useRouter();
 
-    const [id, setId] = useState()
+    const [id, setId] = useState();
     const [isReady, getList, lists, createList, removeList, updateList] = useListStorage();
     const [isLocalReady, setLocalReady, list, updateLocalList, title, updateTitle, words, updateWords] = useLocalList(getList(id));
 
@@ -24,21 +24,21 @@ const EditList = () => {
             const newId = createList();
             setId(newId);
         }
-    }, [router, isReady, id]);
+    }, [isReady, id, createList]);
 
     // Update container with word list
     useEffect(() => {
-        if (isReady && id) {
+        if (isReady && id != 'new') {
             updateLocalList(getList(id));
             setLocalReady();
         }
-    }, [id, isReady]);
+    }, [id, isReady, updateLocalList, getList, setLocalReady]);
 
     useEffect(() => {
         if (isReady && isLocalReady) {
             updateList(id, list);
         }
-    }, [title, words]);
+    }, [isReady, isLocalReady, id, list, title, updateList]);
 
     return (
         <>

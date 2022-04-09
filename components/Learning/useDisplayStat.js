@@ -5,7 +5,6 @@ import ButtonComponent from "../ButtonComponent";
 const useDisplayStat = (stats, resetList) => {
     const [stat, setStat] = useState("0 mistakes");
 
-
     useEffect(() => {
         let mistakes = stats.amount - stats.total;
         setStat(`${mistakes} ${mistakes == 1 ? "mistake" : "mistakes"}`)
@@ -20,7 +19,7 @@ const useDisplayStat = (stats, resetList) => {
         </>
     )
     
-    return [element];
+    return [element, setStat];
 }
 
 export default useDisplayStat;

@@ -7,13 +7,13 @@ const useListStorage = () => {
     const [lists, setLists] = useState([]);
 
     // Returns new list with added empty list
-    const pushNewList = (id, date) => {
+    const pushNewList = useCallback((id, date) => {
         let temp = {...listRaw};
         temp.ids.push(id);
         temp[id] = { title: 'Untitled list', date: date, words: {ids: []} }
 
         return temp;
-    };
+    }, [listRaw]);
 
     // Returns new list with removed list by id
     const removeExistingList = id => {
@@ -25,10 +25,10 @@ const useListStorage = () => {
     }
 
     // Returns list by id
-    const getList = id => {
+    const getList = useCallback((id) => {
         if(!listRaw?.ids || !listRaw.ids.includes(id)) return {title: 'Untitled list', date: undefined, words: {ids: []}};
         return listRaw[id];
-    }
+    }, [listRaw]);
 
     // Returns all lists
     const getLists = useCallback(() => {
@@ -41,27 +41,24 @@ const useListStorage = () => {
         return lists;
     }, [listRaw]);
 
-    const createList = () => {
+    const createList = useCallback(() => {
         const date = Date.now();
         const id = `l${date}`;
 
         setListRaw(pushNewList(id, date));
         return id;
-    }
+    }, [setListRaw, pushNewList]);
 
     const removeList = id => {
         setListRaw(removeExistingList(id));
     } 
 
-    const updateList = (id, newList) => {
+    const updateList = useCallback((id, newList) => {
         if(!id && !newList) return;
 
-        let temp = {...listRaw};
-        temp[id] = newList;
+        setListRaw(c => {const temp = {...c}; temp[id] = newList; return temp});
 
-
-        setListRaw(temp);
-    }
+    }, [setListRaw]);
 
     useEffect(() => {
         if(isReady) {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import useNewTableInput from "./useNewTableInput";
 import TableInput from "./TableInput"
 import { motion } from "framer-motion";
@@ -10,7 +10,7 @@ const Table = ({ words, setWords }) => {
     const [wasOrig, setWasOrig] = useState(null);
 
 
-    const addWord = (orig, trans) => {
+    const addWord = useCallback((orig, trans) => {
         const date = Date.now();
         const id = `w${date}`;
         let temp = { ...words }
@@ -18,27 +18,28 @@ const Table = ({ words, setWords }) => {
         temp.ids.push(id)
         temp[id] = { date, orig, trans };
         setWords(temp);
-    }
+    }, [words, setWords]);
 
-    const updateOriginal = (id, newOrig) => {
+    const updateOriginal = useCallback((id, newOrig) => {
         let temp = { ...words };
         temp[id].orig = newOrig;
         setWords(temp);
-    }
 
-    const updateTranslation = (id, newTrans) => {
+    }, [words, setWords]);
+
+    const updateTranslation = useCallback((id, newTrans) => {
         let temp = { ...words };
         temp[id].trans = newTrans;
         setWords(temp);
-    }
+    }, [words, setWords]);
 
-    const removeWord = id => {
+    const removeWord = useCallback((id) => {
         let temp = { ...words };
         delete temp[id];
 
         temp.ids = temp.ids.filter(i => i != id);
         setWords(temp);
-    }
+    }, [words, setWords]);
 
     // Add new word
     useEffect(() => {
@@ -47,7 +48,7 @@ const Table = ({ words, setWords }) => {
             resetInputs();
             setWasOrig(!!original.trim());
         }
-    }, [original, translation]);
+    }, [original, translation, resetInputs, addWord]);
 
 
     const elements = useMemo(() => {
@@ -91,7 +92,7 @@ const Table = ({ words, setWords }) => {
             }
 
         });
-    }, [words]);
+    }, [words, removeWord, updateOriginal, updateTranslation, wasOrig]);
 
     // Focus on input
     useEffect(() => {
