@@ -50,6 +50,7 @@ const Logo = () => {
             <img
                 className="h-14 sm:h-20 m-1 sm:m-3"
                 src="/images/logo.svg"
+                alt=""
             />
         </button>
     );
