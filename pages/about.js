@@ -36,7 +36,7 @@ const About = () => {
 
         <section>
           <h2>About me</h2>
-          <p>Hi, my name is Martin. I amm building websites and tools in order to speed up my work.</p>
+          <p>Hi, my name is Martin. I am building websites and tools in order to speed up my work.</p>
           <p>I have always had trouble with learning new words or concepts for exams in school. As a lazy student, I also did not spend much time studying. Few years ago I have created simple CLI application in Java that was precursor to Word-o-mat. It was good, but could be way better. I then tried to create GUI application also in Java. Never finished it. Then I learned about React and with more knowledge than ever I created this website.</p>
           <p>This is my first project using <Link href="Next.js" passHref><a className="link">Next.js</a></Link>. It was an amazing journey learning this framework. So great that I decided to clean up code, fix bugs and make it public for everyone.</p>
         </section>
