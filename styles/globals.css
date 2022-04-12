@@ -51,4 +51,27 @@ body {
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
     }
+
+    section > h1 {
+        @apply text-3xl font-bold;
+    }
+    section > h2 {
+        @apply text-2xl font-semibold;
+    }
+
+    section > :first-child {
+        @apply mb-4;
+    }
+
+    section p {
+        @apply my-2;
+    }
+
+    .link {
+        @apply text-sky-700 underline border-current hover:text-sky-900 font-semibold transition-all inline-flex gap-2 w-fit items-center;
+    }
+    .link > svg {
+        @apply text-2xl;
+    }
+
 }
