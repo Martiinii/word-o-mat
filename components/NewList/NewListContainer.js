@@ -13,15 +13,18 @@ const NewListContainer = ({ ready, title, updateTitle, words, updateWords }) => 
     const [firstLoad, setFirstLoad] = useState(false);
 
     useEffect(() => {
-        if(ready && !firstLoad) {
+        if (ready && !firstLoad) {
             setTitleInput(title);
             setFirstLoad(true);
         }
     }, [ready, title, setTitleInput, firstLoad]);
 
     useEffect(() => {
-        updateTitle(titleInputValue)
-    }, [titleInputValue, updateTitle]);
+        if(firstLoad) {
+            updateTitle(titleInputValue);
+        }
+
+    }, [titleInputValue, updateTitle, firstLoad]);
 
 
     const flipWords = () => {
