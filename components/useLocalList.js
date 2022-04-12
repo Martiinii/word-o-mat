@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useLocalList = lsList => {
     const [list, setList] = useState(lsList ?? {title: '', date: undefined, words: {}});
