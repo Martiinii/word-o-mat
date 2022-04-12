@@ -16,23 +16,24 @@ const EditList = () => {
     useEffect(() => {
         const { id } = router.query;
         setId(id);
+
     }, [router])
 
     // Update id
     useEffect(() => {
-        if (isReady && id == 'new') {
+        if (isReady && id == 'new' && !isLocalReady) {
             const newId = createList();
             setId(newId);
         }
-    }, [isReady, id, createList]);
+    }, [isReady, id, createList, isLocalReady]);
 
     // Update container with word list
     useEffect(() => {
-        if (isReady && id != 'new') {
+        if (isReady && id && id != "new" && !isLocalReady) {
             updateLocalList(getList(id));
             setLocalReady();
         }
-    }, [id, isReady, updateLocalList, getList, setLocalReady]);
+    }, [id, isReady, isLocalReady, updateLocalList, getList, setLocalReady]);
 
     useEffect(() => {
         if (isReady && isLocalReady) {
