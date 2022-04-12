@@ -102,9 +102,25 @@ const Table = ({ words, setWords }) => {
     }, [original, translation]);
 
 
+    const variants = {
+        hidden: {
+            scale: .5,
+            opacity: 0,
+        },
+
+        visible: {
+            transition: {
+                duration: .6,
+                type: "ease-in-out"
+            },
+            opacity: 1,
+            scale: 1,
+        }
+    }
+
     return (
 
-        <motion.div layout className="overflow-x-auto mt-10 overflow-hidden">
+        <motion.div layout className="overflow-x-auto mt-10 overflow-hidden" variants={variants} initial="hidden" animate="visible">
             <motion.table layout className="table-auto border-collapse w-full overflow-hidden">
                 <motion.thead layout>
                     <tr>
