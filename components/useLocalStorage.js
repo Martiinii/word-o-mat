@@ -23,13 +23,11 @@ const useLocalStorage = (key, initialValue) => {
     const [isReady, setIsReady] = useState(false);
 
     useEffect(() => {
-        setStoredValue(initialize(key, iv))
-    }, [key, iv]);
-
-    useEffect(() => {
-        setIsReady(true);
-    }, []);
-
+        if (!isReady) {
+            setIsReady(true);
+            setStoredValue(initialize(key, iv));
+        }
+    }, [key, iv, isReady]);
 
     const setValue = useCallback((value) => {
         try {
@@ -39,9 +37,12 @@ const useLocalStorage = (key, initialValue) => {
         }
     }, [setStoredValue]);
 
+
     useEffect(() => {
-        window.localStorage.setItem(key, JSON.stringify(storedValue));
-    }, [key, storedValue])
+        if(isReady) {
+            window.localStorage.setItem(key, JSON.stringify(storedValue));
+        }
+    }, [key, storedValue, isReady])
 
     return [storedValue, setValue, isReady];
 }
