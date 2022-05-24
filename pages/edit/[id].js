@@ -2,21 +2,20 @@ import Head from "next/head";
 import NewListContainer from '../../components/NewList/NewListContainer'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
-import useListStorage from '../../components/useListStorage';
 import useLocalList from '../../components/useLocalList'
+import { useList } from "../../components/context/listContext";
 
 const EditList = () => {
     const router = useRouter();
 
     const [id, setId] = useState();
-    const [isReady, getList, lists, createList, removeList, updateList] = useListStorage();
+    const { isReady, getList, createList, updateList } = useList();
     const [isLocalReady, setLocalReady, list, updateLocalList, title, updateTitle, words, updateWords] = useLocalList(getList(id));
 
     // Set id from router
     useEffect(() => {
         const { id } = router.query;
         setId(id);
-
     }, [router])
 
     // Update id
@@ -46,7 +45,15 @@ const EditList = () => {
             <Head>
                 <title>{title || 'Editing list'}</title>
             </Head>
-            <NewListContainer ready={isLocalReady} list={list} updateList={updateLocalList} title={title} updateTitle={updateTitle} words={words} updateWords={updateWords} />
+            <NewListContainer
+                ready={isLocalReady}
+                list={list}
+                updateList={updateLocalList}
+                title={title}
+                updateTitle={updateTitle}
+                words={words}
+                updateWords={updateWords}
+            />
         </>
     )
 }

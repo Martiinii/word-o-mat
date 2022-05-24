@@ -4,17 +4,20 @@ import "../styles/globals.css"
 
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import { ListProvider } from "../components/context/listContext"
 config.autoAddCss = false
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Template>
-      <Head>
-        <link rel="shortcut icon" href="/images/logo.svg" />
-      </Head>
+    <ListProvider>
+      <Template>
+        <Head>
+          <link rel="shortcut icon" href="/images/logo.svg" />
+        </Head>
 
-      <Component {...pageProps} />
-    </Template>
+        <Component {...pageProps} />
+      </Template>
+      </ListProvider>
   )
 }
 

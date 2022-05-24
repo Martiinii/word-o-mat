@@ -2,14 +2,14 @@ import Head from "next/head";
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 import useRandomWord from "../../../components/Learning/useRandomWord";
-import useListStorage from '../../../components/useListStorage';
 import useFlashcardStyle from "../../../components/Learning/useFlashcardStyle";
+import { useList } from "../../../components/context/listContext";
 
 const LearnPage = () => {
     const router = useRouter();
 
     const [id, setId] = useState();
-    const [ready, getList] = useListStorage();
+    const { isReady, getList } = useList();
     const [list, setRandomList, generateNextWord, currentWord, removeCurrentWord, reset, notUsedWords, stats] = useRandomWord();
 
     const [element, setCurrentWord] = useFlashcardStyle(generateNextWord, removeCurrentWord, reset, stats);
@@ -22,23 +22,23 @@ const LearnPage = () => {
 
     // Update container with word list
     useEffect(() => {
-        if (ready && id) {
+        if (isReady && id) {
             setRandomList(getList(id));
         }
-    }, [id, ready, setRandomList, getList]);
+    }, [id, isReady, setRandomList, getList]);
 
     // If local list is ready or if word is removed then generate new word
     useEffect(() => {
-        if (ready) {
+        if (isReady) {
             generateNextWord();
         }
-    }, [ready, generateNextWord]); //generateNextWord is dependend of 'notUsedWords'
+    }, [isReady, generateNextWord]); //generateNextWord is dependend of 'notUsedWords'
 
     useEffect(() => {
-        if(ready) {
+        if (isReady) {
             setCurrentWord(currentWord);
         }
-    }, [ready, setCurrentWord, currentWord]);
+    }, [isReady, setCurrentWord, currentWord]);
 
 
     return (
